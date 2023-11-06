@@ -1,0 +1,25 @@
+POST http://localhost:3000/stores HTTP/1.1
+Content-Type: application/json
+
+{
+    "name":"HCL",
+    "value":5000
+}
+
+###
+GET http://localhost:3000/stores
+
+###
+GET  http://localhost:3000/stores/64b23988501c45ec2bf6eb5a
+
+###
+PUT http://localhost:3000/stores/6540c3b624cacf170d356843
+Content-Type: application/json
+
+{
+    "name":"Alien",
+    "value":70
+}
+
+###
+DELETE  http://localhost:3000/stores/64b23988501c45ec2bf6eb5a

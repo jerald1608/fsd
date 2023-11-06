@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="calculatorApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Scientific Calculator</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: left;
+            align-items: left;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .calculator-container {
+            text-align: left;
+            max-width: 400px;
+        }
+        body{
+            background-image: url(background.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script>
+        angular.module('calculatorApp', [])
+            .controller('CalculatorController', function($scope) {
+                $scope.result = 0;
+                $scope.operation = "";
+                $scope.memory = null;
+                $scope.num1 = null;
+                $scope.num2 = null;
+
+                $scope.addToMemory = function() {
+                    $scope.memory = $scope.result;
+                };
+
+                $scope.clearMemory = function() {
+                    $scope.memory = null;
+                };
+
+                $scope.calculate = function() {
+                    var num1 = parseFloat($scope.num1);
+                    var num2 = parseFloat($scope.num2);
+
+                    if($scope.operation === '+') {
+                        $scope.result = num1 + num2;
+                    } else if($scope.operation === '-') {
+                        $scope.result = num1 - num2;
+                    } else if($scope.operation === '*') {
+                        $scope.result = num1 * num2;
+                    } else if($scope.operation === '/') {
+                        $scope.result = num1 / num2;
+                    } else if($scope.operation === 'sqrt') {
+                        $scope.result = Math.sqrt(num1);
+                    } else if($scope.operation === 'sin') {
+                        $scope.result = Math.sin(num1);
+                    } else if($scope.operation === 'cos') {
+                        $scope.result = Math.cos(num1);
+                    } else if($scope.operation === 'tan') {
+                        $scope.result = Math.tan(num1);
+                    } else if($scope.operation === 'exp') {
+                        $scope.result = Math.pow(num1, num2);
+                    }
+                };
+            });
+    </script>
+</head>
+<body>
+    <div ng-controller="CalculatorController">
+        <h1>AngularJS Scientific Calculator</h1>
+        <input type="number" ng-model="num1" placeholder="Enter number1"><br>
+        <input type="number" ng-model="num2" placeholder="Enter number2"><br>
+        <select ng-model="operation">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+            <option value="sqrt">Square Root</option>
+            <option value="sin">Sin</option>
+            <option value="cos">Cos</option>
+            <option value="tan">Tan</option>
+            <option value="exp">Exponentiation</option>
+        </select><br>
+        <!-- <input type="number" ng-model="num2" placeholder="Enter second number" ng-if="operation === 'exp'"><br> -->
+        <button ng-click="calculate()">Calculate</button><br>
+        <h2>Result: {{result}}</h2>
+        <button ng-click="addToMemory()">M+</button>
+        <button ng-click="clearMemory()">MC</button>
+        <h2>Memory: {{memory}}</h2>
+    </div>
+</body>
+</html>

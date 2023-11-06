@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ex3</title>
+        <script>const arr=["When you have a dream, you've got to grab it and never let go","Nothing is impossible. The word itself says 'I'm possible!'","There is nothing impossible to they who will try.","The bad news is time flies. The good news is you're the pilot.","Life has got all those twists and turns. You've got to hold on tight and off you go.","Keep your face always toward the sunshine, and shadows will fall behind you.","Success is not final, failure is not fatal: it is the courage to continue that counts."];
+        function quote(){
+            let x = Math.floor((Math.random() * 6) + 1);
+            console.log(x)
+            console.log(arr[x]);
+            document.getElementById("out").innerHTML=arr[x];
+            }
+            </script>
+            <style>
+            .container{
+                margin-top: 50vh;
+                margin: auto;
+                width: 50%;
+                border: 3px solid rgb(93, 83, 180);
+                padding: 10px;
+                text-align: center;
+            }
+            .align{
+                margin: auto;
+                width: 50%;
+                padding: 10px;
+            }
+            .all{
+                padding-top: 10%;
+                position: relative;
+            }
+            h5{
+                font-size: large;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                }
+                </style>
+        </head>
+        <body>
+            <div class ="all">
+                <div class="container">
+                    <h5 id="out">-----</h5>
+                    <div class="align">
+                        <button onclick="quote()">Click me</button>
+                    </div>
+                </div>
+            </div>
+        </body>
+    </html>

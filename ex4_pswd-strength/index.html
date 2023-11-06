@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="utf-8" />
+    <!-- Required CDN's -->
+    <link rel="stylesheet"href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
+  </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js">
+  </script>
+</head>
+<style>
+    .container-fluid {
+        background-color: #ffffff;
+        border-radius: 8px;
+        border: 1px solid lightgrey;
+        padding: 16px;
+        /* Box shadow for the register container */
+        -webkit-box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, 0.75);
+        box-shadow: 0px 0px 12px 2px rgba(0, 0, 0, 0.75);
+    }
+     
+    .input-group {
+        width: 80%;
+        height: auto;
+        padding: 4px;
+    }
+     
+    .progress {
+        height: 4px;
+    }
+     
+    .progress-bar {
+        background-color: green;
+    }
+</style>
+<body>
+    <br>
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">   </div>
+            <div class="col-sm-6">
+                <div class="container-fluid">
+                    <center>
+                        <h2 class="text-success">
+                          Enter Password:
+                      </h2>
+                        <br>
+                        <br>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                  <i class="glyphicon glyphicon-user">
+                                  </i>
+                              </span>
+                                <input id="email" 
+                                       type="text" 
+                                       class="form-control"
+                                       name="email"
+                                       placeholder="User-Email">
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-addon">
+                                  <i class="glyphicon glyphicon-lock">
+                                  </i>
+                              </span>
+                                <input id="password" 
+                                       type="password" 
+                                       class="form-control" 
+                                       name="password" 
+                                       placeholder="Enter Password">
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <div class="progress">
+                                <div class="progress-bar" 
+                                     role="progressbar" 
+                                     aria-valuenow="0"
+                                     aria-valuemin="0" 
+                                     aria-valuemax="100"
+                                     style="width:0%">
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+                        <div class="input-group">
+                            <button class="btn btn-success btn-block">
+                              Register Now!
+                          </button>
+                        </div>
+                    </center>
+                    <br>
+                </div>
+            </div>
+            <div class="col-sm-3">   </div>
+        </div>
+    </div>
+    <script>
+        var percentage = 0;
+ 
+  function check(n, m) {
+      if (n < 6) {
+          percentage = 0;
+          $(".progress-bar").css("background", "#dd4b39");
+      } else if (n < 8) {
+          percentage = 20;
+          $(".progress-bar").css("background", "#9c27b0");
+      } else if (n < 10) {
+          percentage = 40;
+          $(".progress-bar").css("background", "#ff9800");
+      } else {
+          percentage = 60;
+          $(".progress-bar").css("background", "#4caf50");
+      }
+
+      // Check for the character-set constraints
+      // and update percentage variable as needed.
+     
+      //Lowercase Words only
+      if ((m.match(/[a-z]/) != null))
+      {
+          percentage += 10;
+      }
+     
+      //Uppercase Words only
+      if ((m.match(/[A-Z]/) != null))
+      {
+          percentage += 10;
+      }
+     
+      //Digits only
+      if ((m.match(/0|1|2|3|4|5|6|7|8|9/) != null))
+      {
+          percentage += 10;
+      }
+     
+      //Special characters
+      if ((m.match(/\W/) != null) && (m.match(/\D/) != null))
+      {
+          percentage += 10;
+      }
+
+      // Update the width of the progress bar
+      $(".progress-bar").css("width", percentage + "%");
+  }
+
+  // Update progress bar as per the input
+  $(document).ready(function() {
+      // Whenever the key is pressed, apply condition checks.
+      $("#password").keyup(function() {
+          var m = $(this).val();
+          var n = m.length;
+
+          // Function for checking
+          check(n, m);
+      });
+  });
+    </script>
+</body>
+ 
+</html>
